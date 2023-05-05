@@ -15,6 +15,7 @@ import net.crashcraft.crashclaim.permissions.PermissionRoute;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.wesjd.anvilgui.AnvilGUI;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -143,9 +144,10 @@ public class ClaimMenu extends GUI {
                             .plugin(CrashClaim.getPlugin())
                             .itemLeft(Localization.MENU__CLAIM__RENAME__MESSAGE.getItem(player))
                             .onComplete(((player, reply) -> {
-                                claim.setName(reply);
+                                String safeReply = reply.replaceAll("§", "&");
+                                claim.setName(safeReply);
                                 player.spigot().sendMessage(Localization.MENU__CLAIM__RENAME__CONFIRMATION.getMessage(player,
-                                        "name", reply));
+                                        "name", safeReply));
                                 return AnvilGUI.Response.close();
                             }))
                             .open(getPlayer());
@@ -160,9 +162,10 @@ public class ClaimMenu extends GUI {
                             .plugin(CrashClaim.getPlugin())
                             .itemLeft(Localization.MENU__CLAIM__ENTRY_MESSAGE__MESSAGE.getItem(player))
                             .onComplete(((player, reply) -> {
-                                claim.setEntryMessage(reply);
+                                String safeReply = reply.replaceAll("§", "&");
+                                claim.setEntryMessage(safeReply);
                                 player.spigot().sendMessage(Localization.MENU__CLAIM__ENTRY_MESSAGE__CONFIRMATION.getMessage(player,
-                                        "entry_message", reply));
+                                        "entry_message", safeReply));
                                 return AnvilGUI.Response.close();
                             }))
                             .open(getPlayer());
@@ -177,9 +180,10 @@ public class ClaimMenu extends GUI {
                             .plugin(CrashClaim.getPlugin())
                             .itemLeft(Localization.MENU__CLAIM__EXIT_MESSAGE__MESSAGE.getItem(player))
                             .onComplete(((player, reply) -> {
-                                claim.setExitMessage(reply);
+                                String safeReply = reply.replaceAll("§", "&");
+                                claim.setExitMessage(safeReply);
                                 player.spigot().sendMessage(Localization.MENU__CLAIM__EXIT_MESSAGE__CONFIRMATION.getMessage(player,
-                                        "exit_message", reply));
+                                        "exit_message", safeReply));
                                 return AnvilGUI.Response.close();
                             }))
                             .open(getPlayer());
