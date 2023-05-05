@@ -34,12 +34,13 @@ dependencies {
     compileOnly("com.github.Chasewhip8:CrashPayment:master-SNAPSHOT")
 
     // Paper
-    compileOnly("io.papermc.paper:paper-api:1.18-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT")
 
     // Adventure
-    implementation("net.kyori:adventure-api:4.11.0")
-    implementation("net.kyori:adventure-platform-bukkit:4.1.2")
-    implementation("net.kyori:adventure-text-minimessage:4.11.0")
+    val adventure = "4.13.0";
+    implementation("net.kyori:adventure-api:${adventure}")
+    implementation("net.kyori:adventure-platform-bukkit:4.3.0")
+    implementation("net.kyori:adventure-text-minimessage:${adventure}")
 
     // Other
     implementation("co.aikar:taskchain-bukkit:3.7.2")
@@ -48,10 +49,11 @@ dependencies {
     implementation("co.aikar:fastutil-longbase:3.0-SNAPSHOT")
     implementation("co.aikar:fastutil-longhashmap:3.0-SNAPSHOT")
     implementation("co.aikar:acf-paper:0.5.0-SNAPSHOT")
-    implementation("io.papermc:paperlib:1.0.1")
+    implementation("io.papermc:paperlib:1.0.7")
     implementation("co.aikar:idb-core:1.0.0-SNAPSHOT")
-    implementation("com.zaxxer:HikariCP:2.4.1")
-    compileOnly( "com.google.guava:guava:29.0-jre")
+    implementation("com.zaxxer:HikariCP:5.0.1")
+    implementation("org.apache.commons:commons-lang3:3.12.0")
+    compileOnly("com.google.guava:guava:31.1-jre")
     compileOnly( "com.comphenix.protocol:ProtocolLib:5.0.0-SNAPSHOT")
 //    compileOnly("com.github.dmulloy2:ProtocolLib:-SNAPSHOT")
     compileOnly( "net.milkbowl.vault:VaultAPI:1.7")
@@ -62,7 +64,7 @@ dependencies {
     compileOnly("net.luckperms:api:5.4")
 
     // Cache2k
-    val cache2kVersion = "2.4.1.Final"
+    val cache2kVersion = "2.6.1.Final"
 
     implementation("org.cache2k:cache2k-api:${cache2kVersion}")
     runtimeOnly("org.cache2k:cache2k-core:${cache2kVersion}")
@@ -80,6 +82,7 @@ tasks {
         relocate("it.unimi.dsi", "net.crashcraft.crashclaim.fastutil")
         relocate("org.cache2k.IntCache", "net.crashcraft.crashclaim.cache2k")
         relocate("com.zaxxer.hikari", "net.crashcraft.crashclaim.hikari")
+        relocate("org.apache.commons", "net.crashcraft.crashclaim.apache.commons")
     }
 
     build {
