@@ -77,7 +77,7 @@ public class NewClaimMode implements ClaimMode {
 
         int area = ContributionManager.getArea(min.getBlockX(), min.getBlockZ(), max.getBlockX(), max.getBlockZ());
 
-        int price = (GlobalConfig.bypassModeBypassesMoney && PermissionHelper.getPermissionHelper().getBypassManager().isBypass(player.getUniqueId())) ?
+        int price = ((GlobalConfig.bypassModeBypassesMoney && PermissionHelper.getPermissionHelper().getBypassManager().isBypass(player.getUniqueId()))) || player.hasPermission("crashclaim.free") ?
                 0 : (int) Math.ceil(area * GlobalConfig.money_per_block);
         String priceString = Integer.toString(price);
 

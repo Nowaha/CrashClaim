@@ -181,7 +181,7 @@ public class ClaimDataManager implements Listener {
             int difference = area - originalArea;
 
             if (difference > 0) {
-                int price = (int) Math.ceil(difference * GlobalConfig.money_per_block);
+                int price = resizer.hasPermission("crashclaim.free") ? 0 : (int) Math.ceil(difference * GlobalConfig.money_per_block);
                 String priceString = Integer.toString(price);
                 //Check price with player
                 new ConfirmationMenu(resizer,
@@ -195,20 +195,27 @@ public class ClaimDataManager implements Listener {
                         (player, aBoolean) -> {
                             if (aBoolean) {
                                 if (PermissionHelper.getPermissionHelper().hasPermission(claim, player.getUniqueId(), PermissionRoute.MODIFY_CLAIM)) {
-                                    CrashClaim.getPlugin().getPayment().makeTransaction(resizer.getUniqueId(), TransactionType.WITHDRAW, "Claim Resize Up", price, (response) -> {
-                                        if (response.getTransactionStatus() == TransactionResponse.SUCCESS) {
-                                            ContributionManager.addContribution(claim, newMinX, newMinZ, newMaxX, newMaxZ, resizer.getUniqueId());  // Contribution tracking
-                                            resizeClaimCall(claim, newMinX, newMinZ, newMaxX, newMaxZ);
+                                    if (price > 0) {
+                                        CrashClaim.getPlugin().getPayment().makeTransaction(resizer.getUniqueId(), TransactionType.WITHDRAW, "Claim Resize Up", price, (response) -> {
+                                            if (response.getTransactionStatus() == TransactionResponse.SUCCESS) {
+                                                ContributionManager.addContribution(claim, newMinX, newMinZ, newMaxX, newMaxZ, resizer.getUniqueId());  // Contribution tracking
+                                                resizeClaimCall(claim, newMinX, newMinZ, newMaxX, newMaxZ);
 
-                                            consumer.accept(true);
-                                            return;
-                                        } else {
-                                            //Didnt have enough money or something
-                                            player.spigot().sendMessage(Localization.RESIZE__TRANSACTION_ERROR.getMessage(player,
-                                                    "error", response.getTransactionError()));
-                                        }
-                                        consumer.accept(false);
-                                    });
+                                                consumer.accept(true);
+                                                return;
+                                            } else {
+                                                //Didnt have enough money or something
+                                                player.spigot().sendMessage(Localization.RESIZE__TRANSACTION_ERROR.getMessage(player,
+                                                        "error", response.getTransactionError()));
+                                            }
+                                            consumer.accept(false);
+                                        });
+                                    } else {
+                                        ContributionManager.addContribution(claim, newMinX, newMinZ, newMaxX, newMaxZ, resizer.getUniqueId());  // Contribution tracking
+                                        resizeClaimCall(claim, newMinX, newMinZ, newMaxX, newMaxZ);
+
+                                        consumer.accept(true);
+                                    }
                                 } else {
                                     player.spigot().sendMessage(Localization.RESIZE__NO_LONGER_PERMISSION.getMessage(player));
                                 }

@@ -43,14 +43,14 @@ public class ContributionManager {
     }
 
     private static void refund(Claim claim, int value) {
-        if (value == 0){
+        /*if (value == 0){
             return;
         }
 
         for (Map.Entry<UUID, Integer> entry : claim.getContribution().entrySet()){
             CrashClaim.getPlugin().getPayment().makeTransaction(entry.getKey(), TransactionType.DEPOSIT, "Claim Refund", value, (transaction) -> {
                 OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(transaction.getOwner());
-                if (offlinePlayer.isOnline()){
+                if (offlinePlayer.isOnline()) {
                     Player p = offlinePlayer.getPlayer();
                     if (p != null) {
                         p.spigot().sendMessage(Localization.CONTRIBUTION_REFUND.getMessage(p,
@@ -58,6 +58,6 @@ public class ContributionManager {
                     }
                 }
             });
-        }
+        }*/
     }
 }
