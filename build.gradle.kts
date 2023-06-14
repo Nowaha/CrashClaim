@@ -44,11 +44,11 @@ dependencies {
 
     // Other
     implementation("co.aikar:taskchain-bukkit:3.7.2")
-    implementation("net.wesjd:anvilgui:1.6.3-SNAPSHOT")
+    implementation("net.wesjd:anvilgui:1.6.6-SNAPSHOT")
     implementation("co.aikar:fastutil-base:3.0-SNAPSHOT")
     implementation("co.aikar:fastutil-longbase:3.0-SNAPSHOT")
     implementation("co.aikar:fastutil-longhashmap:3.0-SNAPSHOT")
-    implementation("co.aikar:acf-paper:0.5.0-SNAPSHOT")
+    implementation("co.aikar:acf-paper:0.5.1-SNAPSHOT")
     implementation("io.papermc:paperlib:1.0.7")
     implementation("co.aikar:idb-core:1.0.0-SNAPSHOT")
     implementation("com.zaxxer:HikariCP:5.0.1")

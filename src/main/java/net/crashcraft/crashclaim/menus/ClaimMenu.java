@@ -143,8 +143,8 @@ public class ClaimMenu extends GUI {
                     new AnvilGUI.Builder()
                             .plugin(CrashClaim.getPlugin())
                             .itemLeft(Localization.MENU__CLAIM__RENAME__MESSAGE.getItem(player))
-                            .onComplete(((player, reply) -> {
-                                String safeReply = reply.replaceAll("§", "&");
+                            .onClick(((slot, reply) -> {
+                                String safeReply = reply.getText().replaceAll("§", "&");
                                 claim.setName(safeReply);
                                 player.spigot().sendMessage(Localization.MENU__CLAIM__RENAME__CONFIRMATION.getMessage(player,
                                         "name", safeReply));
@@ -161,8 +161,8 @@ public class ClaimMenu extends GUI {
                     new AnvilGUI.Builder()
                             .plugin(CrashClaim.getPlugin())
                             .itemLeft(Localization.MENU__CLAIM__ENTRY_MESSAGE__MESSAGE.getItem(player))
-                            .onComplete(((player, reply) -> {
-                                String safeReply = reply.replaceAll("§", "&");
+                            .onClick(((slot, reply) -> {
+                                String safeReply = reply.getText().replaceAll("§", "&");
                                 claim.setEntryMessage(safeReply);
                                 player.spigot().sendMessage(Localization.MENU__CLAIM__ENTRY_MESSAGE__CONFIRMATION.getMessage(player,
                                         "entry_message", safeReply));
@@ -179,8 +179,8 @@ public class ClaimMenu extends GUI {
                     new AnvilGUI.Builder()
                             .plugin(CrashClaim.getPlugin())
                             .itemLeft(Localization.MENU__CLAIM__EXIT_MESSAGE__MESSAGE.getItem(player))
-                            .onComplete(((player, reply) -> {
-                                String safeReply = reply.replaceAll("§", "&");
+                            .onClick(((slot, reply) -> {
+                                String safeReply = reply.getText().replaceAll("§", "&");
                                 claim.setExitMessage(safeReply);
                                 player.spigot().sendMessage(Localization.MENU__CLAIM__EXIT_MESSAGE__CONFIRMATION.getMessage(player,
                                         "exit_message", safeReply));
