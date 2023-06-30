@@ -44,7 +44,7 @@ dependencies {
 
     // Other
     implementation("co.aikar:taskchain-bukkit:3.7.2")
-    implementation("net.wesjd:anvilgui:1.6.6-SNAPSHOT")
+    implementation("net.wesjd:anvilgui:1.7.0-SNAPSHOT")
     implementation("co.aikar:fastutil-base:3.0-SNAPSHOT")
     implementation("co.aikar:fastutil-longbase:3.0-SNAPSHOT")
     implementation("co.aikar:fastutil-longhashmap:3.0-SNAPSHOT")
@@ -52,7 +52,6 @@ dependencies {
     implementation("io.papermc:paperlib:1.0.7")
     implementation("co.aikar:idb-core:1.0.0-SNAPSHOT")
     implementation("com.zaxxer:HikariCP:5.0.1")
-    implementation("org.apache.commons:commons-lang3:3.12.0")
     compileOnly("com.google.guava:guava:31.1-jre")
     compileOnly( "com.comphenix.protocol:ProtocolLib:5.0.0-SNAPSHOT")
 //    compileOnly("com.github.dmulloy2:ProtocolLib:-SNAPSHOT")
@@ -82,7 +81,6 @@ tasks {
         relocate("it.unimi.dsi", "net.crashcraft.crashclaim.fastutil")
         relocate("org.cache2k.IntCache", "net.crashcraft.crashclaim.cache2k")
         relocate("com.zaxxer.hikari", "net.crashcraft.crashclaim.hikari")
-        relocate("org.apache.commons", "net.crashcraft.crashclaim.apache.commons")
     }
 
     build {
