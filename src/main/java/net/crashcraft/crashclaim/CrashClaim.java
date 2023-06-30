@@ -24,7 +24,6 @@ import net.crashcraft.crashclaim.migration.MigrationManager;
 import net.crashcraft.crashclaim.permissions.PermissionHelper;
 import net.crashcraft.crashclaim.pluginsupport.PluginSupport;
 import net.crashcraft.crashclaim.pluginsupport.PluginSupportManager;
-import net.crashcraft.crashclaim.update.UpdateManager;
 import net.crashcraft.crashclaim.visualize.VisualizationManager;
 import net.crashcraft.crashpayment.CrashPayment;
 import net.crashcraft.crashpayment.payment.PaymentProcessor;
@@ -56,7 +55,6 @@ public class CrashClaim extends JavaPlugin {
     private CommandManager commandManager;
     private MigrationManager migrationManager;
     private BukkitAudiences adventure;
-    private UpdateManager updateManager;
 
     @Override
     public void onLoad() {
@@ -243,9 +241,5 @@ public class CrashClaim extends JavaPlugin {
 
     public PluginSupport getPluginSupport(){
         return pluginSupport.getSupportDistributor();
-    }
-
-    public UpdateManager getUpdateManager() {
-        return updateManager;
     }
 }
